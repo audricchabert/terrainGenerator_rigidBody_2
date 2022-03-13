@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     //ref https://www.youtube.com/watch?v=wlZUu-I05Bk
 
 
-    int go = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,10 +45,12 @@ public class PlayerController : MonoBehaviour
 
     void CodeUpdate2()
     {
-       
-        GetComponent<Rigidbody>().AddForce(new Vector3(0,  go,0));
+        Quaternion q = transform.rotation;
+        //TODO : get rotation anglel to use a trigo function 
 
-        GetComponent<Rigidbody>().AddForce(new Vector3(inputs.y, inputs.z, inputs.x));
+        //TODO : check different addforce ForceMode : https://docs.unity3d.com/ScriptReference/Rigidbody.AddForce.html
+
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(inputs.y*3, inputs.z*3, inputs.x*3));
 
     }
 }
