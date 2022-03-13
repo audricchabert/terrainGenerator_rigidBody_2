@@ -4,38 +4,34 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    int start = 0;
+    // ref: https://www.youtube.com/watch?v=_QajrabyTJc
+    //from project : Brackeys_FPS_Movement_unity2020
 
+    public float mouseSensitivity = 1200f;
 
-    public GameObject player;
+    float xRotation = 0f;
+    float xSensitivity = 10f;
+    float ySensitivity = 10f;
+
+    public Transform playerBody;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
- 
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
+        xRotation -= mouseY * xSensitivity;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        //CODE CAMERA
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up * mouseX * ySensitivity);
 
-        //regarder test_addforce/assets/movecamera.cs pour plus d'infos
-        if (start ==0)// je voulais juste faire <= 0 au début
-        {
-
-        Vector3 playerPosition = gameObject.transform.position;
-        playerPosition.z -= 10;
-        transform.position = playerPosition;
-            start++;
-            //FAUX : il semble qu'il faut que le player -> constraints -> freeze postion=Z soit mis pour ne pas se barrer
-
-        }
-        //transform.position += new Vector3(0, 0, 10);
-        //transform.Translate(new Vector3(0, 0, 10), Space.World);
     }
-
 }
 
