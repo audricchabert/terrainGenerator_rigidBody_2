@@ -10,8 +10,8 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivity = 1200f;
 
     float xRotation = 0f;
-    float xSensitivity = 1f;
-    float ySensitivity = 1f;
+    float xSensitivity = 0.7f;
+    float ySensitivity = 0.7f;
 
     public Transform playerBody;
     // Start is called before the first frame update

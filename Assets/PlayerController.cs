@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
         float y = Input.GetAxis("Horizontal");
         float z = 0;
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Fire2"))
         {
             z = 1;
         }
@@ -50,7 +50,40 @@ public class PlayerController : MonoBehaviour
 
         //TODO : check different addforce ForceMode : https://docs.unity3d.com/ScriptReference/Rigidbody.AddForce.html
 
-        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(inputs.y*3, inputs.z*3, inputs.x*3));
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(inputs.y*3, inputs.z*1, inputs.x*3));
+        
 
+        if (transform.position.y <= 0)
+        {
+            Vector3 newVector = transform.position;
+            newVector.y = 0;
+            GetComponent<Rigidbody>().MovePosition(newVector);
+            //transform.position = newVector;
+        }
+        if (transform.position.z <= 0)
+        {
+            Vector3 newVector = transform.position;
+            newVector.y = 0;
+            GetComponent<Rigidbody>().MovePosition(newVector);
+            //transform.position = newVector;
+        }
+        if (transform.position.y >= 1024)
+        {
+            Vector3 newVector = transform.position;
+            newVector.y = 1024;
+            transform.position = newVector;
+        }
+        if (transform.position.z >= 1024)
+        {
+            Vector3 newVector = transform.position;
+            newVector.y = 1024;
+            transform.position = newVector;
+        }
+        if (transform.position.y <= 0)
+        {
+            Vector3 newVector = transform.position;
+            newVector.y = 0;
+            transform.position = newVector;
+        }
     }
 }
