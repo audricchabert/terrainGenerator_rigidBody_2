@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 //using UnityEditor.UI;
 
-public class TextUpdater : MonoBehaviour
+public class PlayerPositionUpdater : MonoBehaviour
 {
-
+    public GameObject player1;
     public Text testText1;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,6 @@ public class TextUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        testText1.text = "zou";
+        testText1.text = player1.transform.position.ToString();
     }
 }
