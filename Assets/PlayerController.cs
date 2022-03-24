@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     //ref https://www.youtube.com/watch?v=wlZUu-I05Bk
 
     string debugAction="";
-
+    public Vector3 velocityz;
     
     // Start is called before the first frame update
     void Start()
@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
 
     void CodeUpdate2()
     {
+
+        velocityz = GetComponent<Rigidbody>().velocity;
+
         //TODO : verifier si la variable est utilisée
         Quaternion q = transform.rotation;
 
