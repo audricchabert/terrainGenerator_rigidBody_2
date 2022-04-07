@@ -11,7 +11,18 @@ public class PlayerController : MonoBehaviour
 
     string debugAction="";
     public Vector3 velocityz;
-    
+
+    //x = forward / backward
+    public float XforwardBackwardAcceleration = 1000;
+    //y = up/down
+    public float YupDownAcceleration = 500;
+    //z = left or right
+    public float ZrightLeftAcceleration = 1000;
+
+    public PhysicMaterial slide;
+
+    ForceMode forceMode = ForceMode.Force;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,47 +33,95 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
             
-        GetInputs();
-        CodeUpdate2();
+        ProcessInputs();
+        MovePlayer();
         
     }
 
 
-    void GetInputs()
+    void ProcessInputs()
     {
-        float forward = Input.GetAxis("Vertical");
+        float XupDown = Input.GetAxis("Vertical");
 
-        float sideways = Input.GetAxis("Horizontal");
-        float height = 0;
+        float ZleftRight = Input.GetAxis("Horizontal");
+        float YupDown = 0;
         if (Input.GetButton("Fire2"))
         {
-            height = 1;
+            YupDown = 1;
         }
         else
         {
-            height = 0;
+            YupDown = 0;
         }
-        inputs = new Vector3(forward * 4, sideways * 5,height*10);
+        inputs = new Vector3(XupDown,YupDown, ZleftRight);
+
+
+        //hover when left clicking
+        if (Input.GetButton("Fire1"))
+        {
+            //changeDrag(6.0f);
+            //slide.dynamicFriction = 0;
+            //slide.staticFriction = 0;
+
+            cycleForceModes();
+        }
+        else
+        {
+            //slide.dynamicFriction = 1;
+            //slide.staticFriction = 1;
+            //changeDrag(0.0f);
+        }
 
     }
 
-    void CodeUpdate2()
+    void cycleForceModes()
     {
+        //cycle through force modes
+        if (forceMode == ForceMode.Force)
+        {
+            forceMode = ForceMode.Impulse;
+        }
+        if (forceMode == ForceMode.Impulse)
+        {
+            forceMode = ForceMode.VelocityChange;
+        }
+        if (forceMode == ForceMode.VelocityChange)
+        {
+            forceMode = ForceMode.Acceleration;
+        }
+        if (forceMode == ForceMode.Acceleration)
+        {
+            forceMode = ForceMode.Force;
+        }
+    }
 
+    void MovePlayer()
+    {
+        //log the velocity for the PlayerSpeedUpdater
         velocityz = GetComponent<Rigidbody>().velocity;
 
-        //TODO : verifier si la variable est utilisée
-        Quaternion q = transform.rotation;
-
+        //Add force to the rigidbody
         AddForce();
 
+        CheckBoundary();
+    }
+
+    void CheckBoundary()
+    {
         //check height boundary
         CheckBoundarySideY(0, 200, 0);
+
+
         //checck sideways boundary;
         CheckBoundarySideX(0, 1024, 70);
         //check forward/backward boundary
         CheckBoundarySideZ(0, 1024, 59);
 
+    }
+
+    void changeDrag(float value)
+    {
+        GetComponent<Rigidbody>().drag = value;
     }
 
     void AddForce()
@@ -72,9 +131,10 @@ public class PlayerController : MonoBehaviour
         //TODO : check different addforce ForceMode : https://docs.unity3d.com/ScriptReference/Rigidbody.AddForce.html
 
         //TODO : mettre les vecteurs dans l'ordre x,y,z ; peut être changer l'ordre dans lequel on set le vecteur dans GetInputs?
-        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(inputs.y * 3, inputs.z * 1, inputs.x * 3));
+        //GetComponent<Rigidbody>().AddRelativeForce(new Vector3(inputs.y * xAcceleration, inputs.z * yAcceleration, inputs.x * zAcceleration));
+        GetComponent<Rigidbody>().AddRelativeForce(inputs.z * XforwardBackwardAcceleration, inputs.y * YupDownAcceleration, inputs.x * ZrightLeftAcceleration,forceMode);
+      
 
-        
     }
 
     void CheckBoundarySideY(float minValue,float maxValue, float padding)
