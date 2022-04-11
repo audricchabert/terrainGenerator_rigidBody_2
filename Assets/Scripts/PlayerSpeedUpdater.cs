@@ -29,6 +29,11 @@ public class PlayerSpeedUpdater : MonoBehaviour
             Vector3 positionDelta = new Vector3(previousPosition.x - currentPosition.x,previousPosition.y-currentPosition.y, previousPosition.z- currentPosition.z);
             print(positionDelta);
             text3.text = positionDelta.ToString();
+
+            float velocityz = player.GetComponent<Rigidbody>().velocity.magnitude;
+            text3.text += "magnitude:"+velocityz.ToString();
+            
+
             previousPosition = currentPosition;
         }
     }

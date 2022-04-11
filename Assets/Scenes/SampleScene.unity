@@ -163,6 +163,7 @@ MonoBehaviour:
   YupDownAcceleration: 1000
   ZrightLeftAcceleration: 2000
   slide: {fileID: 13400000, guid: 282be02ad384e58459b1d3965a7a01ae, type: 2}
+  horizontalSpeed: 0
 --- !u!136 &18369072
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -377,6 +378,7 @@ GameObject:
   - component: {fileID: 151655345}
   - component: {fileID: 151655347}
   - component: {fileID: 151655346}
+  - component: {fileID: 151655348}
   m_Layer: 5
   m_Name: DebugText
   m_TagString: Untagged
@@ -445,6 +447,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151655344}
   m_CullTransparentMesh: 1
+--- !u!114 &151655348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151655344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5d52e48c05d4a4c962dc11f18bd34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testo: {fileID: 151655346}
+  testoInputText: 
 --- !u!1 &377933097
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,9 +926,9 @@ MonoBehaviour:
   Height: 1024
   Depth: 60
   Octaves: 1
-  Scale: 120
+  Scale: 90
   Lacunarity: 2
-  Persistance: 0.5
+  Persistance: 0.475
   HeightCurve:
     serializedVersion: 2
     m_Curve:
@@ -937,10 +953,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Offset: 100
-  FalloffDirection: 3
+  Offset: 0
+  FalloffDirection: 2
   FalloffRange: 3
-  UseFalloffMap: 0
+  UseFalloffMap: 1
   Randomize: 0
   AutoUpdate: 0
 --- !u!154 &873716861
@@ -1151,6 +1167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 18369070}
   testo: {fileID: 1579298334}
+  horizontalSpeed: 0
 --- !u!114 &1579298334
 MonoBehaviour:
   m_ObjectHideFlags: 0

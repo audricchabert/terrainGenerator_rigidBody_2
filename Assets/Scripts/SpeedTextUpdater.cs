@@ -10,6 +10,8 @@ public class SpeedTextUpdater : MonoBehaviour
     Vector3 previousPosition;
     Vector3 currentPosition;
 
+    public float horizontalSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class SpeedTextUpdater : MonoBehaviour
             //Time.fixedTime
             Vector3 velociry = this.player.GetComponent<Rigidbody>().velocity;
             print(velociry);
+            //magnitude forum post : https://answers.unity.com/questions/265810/limiting-rigidbody-speed.html
             testo.text = string.Concat(velociry.ToString(), this.player.GetComponent<Rigidbody>().velocity.magnitude);
             
                 /*;

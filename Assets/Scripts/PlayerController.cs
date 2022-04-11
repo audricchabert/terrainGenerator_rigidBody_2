@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
 
     public PhysicMaterial slide;
 
-    ForceMode forceMode = ForceMode.Force;
+
+    public float horizontalSpeed;
+      ForceMode forceMode = ForceMode.Force;
 
     // Start is called before the first frame update
     void Start()
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
         //Add force to the rigidbody
         AddForce();
-
+        LimitSpeed();
         CheckBoundary();
     }
 
@@ -117,6 +119,14 @@ public class PlayerController : MonoBehaviour
         //check forward/backward boundary
         CheckBoundarySideZ(0, 1024, 59);
 
+    }
+
+    void LimitSpeed()
+    {
+        Vector3 velocityrezr = GetComponent<Rigidbody>().velocity;
+        horizontalSpeed = velocityrezr.x * velocityrezr.x + velocityrezr.y * velocityrezr.y;
+        Mathf.Sqrt(horizontalSpeed);
+        
     }
 
     void changeDrag(float value)
