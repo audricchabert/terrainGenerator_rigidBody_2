@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 18369073}
   - component: {fileID: 18369072}
   - component: {fileID: 18369071}
+  - component: {fileID: 18369078}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -272,6 +273,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0.587, y: -0.139, z: -0.025}
+--- !u!114 &18369078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18369070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3baf251d174243f4babe19b21fd8a877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &88800171
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +451,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: New Text2
 --- !u!222 &151655347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -924,9 +937,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Width: 1024
   Height: 1024
-  Depth: 60
+  Depth: 70
   Octaves: 1
-  Scale: 90
+  Scale: 70
   Lacunarity: 2
   Persistance: 0.475
   HeightCurve:
@@ -953,11 +966,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Offset: 0
+  Offset: 4395.5024
   FalloffDirection: 2
-  FalloffRange: 3
+  FalloffRange: 6
   UseFalloffMap: 1
-  Randomize: 0
+  Randomize: 1
   AutoUpdate: 0
 --- !u!154 &873716861
 TerrainCollider:
