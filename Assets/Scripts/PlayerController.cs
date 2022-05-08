@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public float horizontalSpeed;
       ForceMode forceMode = ForceMode.Force;
 
+    public GameObject objectivePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +67,8 @@ public class PlayerController : MonoBehaviour
             //slide.dynamicFriction = 0;
             //slide.staticFriction = 0;
 
-            cycleForceModes();
+            //cycleForceModes();
+            //Instantiate(objectivePrefab, new Vector3(transform.position.x, transform.position.y + 100, transform.position.z),objectivePrefab.transform.rotation);
         }
         else
         {
