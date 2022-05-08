@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour
     public float horizontalSpeed;
       ForceMode forceMode = ForceMode.Force;
 
-    public GameObject objectivePrefab;
+    int maxSpawn = 0;
+    public GameObject objectivePrefabRigid;
+    public GameObject objectivePrefabScript;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +70,14 @@ public class PlayerController : MonoBehaviour
             //slide.staticFriction = 0;
 
             //cycleForceModes();
-            //Instantiate(objectivePrefab, new Vector3(transform.position.x, transform.position.y + 100, transform.position.z),objectivePrefab.transform.rotation);
+            if(maxSpawn < 3)
+            {
+                Instantiate(objectivePrefabRigid, new Vector3(290, 82, 234), objectivePrefabRigid.transform.rotation);
+                Instantiate(objectivePrefabScript, new Vector3(295, 77, 234), objectivePrefabScript.transform.rotation);
+
+                maxSpawn++;
+            }
+
         }
         else
         {
