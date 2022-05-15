@@ -227,4 +227,9 @@ public class PlayerController : MonoBehaviour
             p.text = debugAction;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+    }
 }

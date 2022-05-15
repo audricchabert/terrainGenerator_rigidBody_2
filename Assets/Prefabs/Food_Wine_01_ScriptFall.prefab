@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5850753827186749261}
   - component: {fileID: 5850753827185651085}
   - component: {fileID: 5850753826417253387}
+  - component: {fileID: 673371614319072714}
   m_Layer: 0
   m_Name: Food_Wine_01_ScriptFall
   m_TagString: Untagged
@@ -95,3 +96,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 2
+--- !u!136 &673371614319072714
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850753827183719245}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.31459156
+  m_Height: 1.1118261
+  m_Direction: 1
+  m_Center: {x: 0.055034094, y: -0.07641339, z: -0.02899279}
