@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     Vector3 inputs;
-    public Text p;
+    public Text ptext;
+    public Text genericTopText;
     //ref https://www.youtube.com/watch?v=wlZUu-I05Bk
 
     string debugAction="";
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
     int maxSpawn = 0;
     public GameObject objectivePrefabRigid;
     public GameObject objectivePrefabScript;
+
+    public int objectiveScore=0;
 
     // Start is called before the first frame update
     void Start()
@@ -169,7 +172,7 @@ public class PlayerController : MonoBehaviour
             //transform.position = newVector;
             debugAction = "transform.position.y <= minValue + padding";
             debugAction += transform.position.ToString();
-            p.text = debugAction;
+            ptext.text = debugAction;
         }
         if (transform.position.y >= maxValue - padding)
         {
@@ -179,7 +182,7 @@ public class PlayerController : MonoBehaviour
             
             debugAction = "transform.position.y >= maxValue + padding";
             debugAction += transform.position.ToString() ;
-            p.text = debugAction;
+            ptext.text = debugAction;
         }
     }
 
@@ -192,7 +195,7 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(newVector);
             debugAction = "transform.position.x <= minValue + padding";
             debugAction += transform.position.ToString();
-            p.text = debugAction;
+            ptext.text = debugAction;
         }
         if (transform.position.x >= maxValue - padding)
         {
@@ -201,7 +204,7 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(newVector);
             debugAction = "transform.position.x >= maxValue + padding";
             debugAction += transform.position.ToString();
-            p.text = debugAction;
+            ptext.text = debugAction;
         }
     }
 
@@ -215,7 +218,7 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(newVector);
             debugAction = "transform.position.z <= minValue + padding";
             debugAction += transform.position.ToString();
-            p.text = debugAction;
+            ptext.text = debugAction;
         }
         if (transform.position.z >= maxValue - padding)
         {
@@ -224,12 +227,18 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody>().MovePosition(newVector);
             debugAction = "transform.position.z >= maxValue + padding";
             debugAction += transform.position.ToString();
-            p.text = debugAction;
+            ptext.text = debugAction;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
+        objectiveScore++;
+        genericTopText.text = objectiveScore.ToString();
+        Debug.Log(objectiveScore);
+
+        //GameObject.Find("PlayerDebugMessageUpdater").GetComponent<Text>().text = objectiveScore.ToString();
+        //GetComponent<PlayerDebugMessageUpdater>().testText1.text = objectiveScore.ToString();
     }
 }

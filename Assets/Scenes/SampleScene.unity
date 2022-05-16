@@ -159,7 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ba209b97b7b314a8b9fbb0c102901b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p: {fileID: 151655346}
+  ptext: {fileID: 151655346}
+  genericTopText: {fileID: 253054451}
   velocityz: {x: 0, y: 0, z: 0}
   XforwardBackwardAcceleration: 2000
   YupDownAcceleration: 1000
@@ -168,6 +169,7 @@ MonoBehaviour:
   horizontalSpeed: 0
   objectivePrefabRigid: {fileID: 1253081775800288904, guid: e08d94d18b5748440b23a705bc54e318, type: 3}
   objectivePrefabScript: {fileID: 5850753827183719245, guid: 520efe7a202790c4dba66b1ad3392396, type: 3}
+  objectiveScore: 0
 --- !u!136 &18369072
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -525,7 +527,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'new generic debug text
+
+'
 --- !u!222 &253054452
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -672,8 +676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c948caa84fb7c0b40a11c36ea6cce787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMessage: 
+  debugMessage: test debuggg message
   testText1: {fileID: 151655346}
+  playerControllerScript: {fileID: 18369071}
 --- !u!114 &377933103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testo: {fileID: 253054451}
-  testoInputText: generic placeholder text
+  testoInputText: new generic placeholder text
 --- !u!114 &377933105
 MonoBehaviour:
   m_ObjectHideFlags: 0

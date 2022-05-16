@@ -33,7 +33,7 @@ public class SpeedTextUpdater : MonoBehaviour
             //comme a=ça on if Time.fixedTime modulo 2, then pairNew =true et vitesse=vitesse, et lorsque seconde impaire, remettre pairNew = false
             //Time.fixedTime
             Vector3 velociry = this.player.GetComponent<Rigidbody>().velocity;
-            print(velociry);
+            //print(velociry);
             //magnitude forum post : https://answers.unity.com/questions/265810/limiting-rigidbody-speed.html
             testo.text = string.Concat(velociry.ToString(), this.player.GetComponent<Rigidbody>().velocity.magnitude);
             

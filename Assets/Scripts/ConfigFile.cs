@@ -59,8 +59,8 @@ public class ConfigFile : MonoBehaviour {
          * TRY TO ACCESS DEBUG TEXT, dont remember why ill do that
          */
         //ts.zou="a";
-        Debug.Log(GameObject.Find("DebugText").GetComponent<Text>());
-        print(GameObject.Find("DebugText").GetComponent<Text>());
+        //Debug.Log(GameObject.Find("DebugText").GetComponent<Text>());
+        //print(GameObject.Find("DebugText").GetComponent<Text>());
         GameObject.Find("DebugText").GetComponent<Text>().text = "nouveau";
         //move _move = FindObjectOfType<DebugText>();
 
