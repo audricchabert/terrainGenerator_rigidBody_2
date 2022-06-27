@@ -31,11 +31,12 @@ public class ConfigFile : MonoBehaviour {
     void separatePlayerConfig()
     {
         haha2 = GetComponent<Rigidbody>();
-        haha2.mass = 230;
-        haha2.drag = 0.05f;
+        //this works !
+        //haha2.mass = 200;
+        //haha2.drag = 0.05f;
 
         ps = GetComponent<PlayerController>();
-        ps.YupDownAcceleration = 3000;
+        //ps.YupDownAcceleration = 3000;
 
     }
     void terrainGeneratorConfig()

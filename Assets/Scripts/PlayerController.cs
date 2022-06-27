@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     Vector3 inputs;
     public Text ptext;
     public Text genericTopText;
+    
     //ref https://www.youtube.com/watch?v=wlZUu-I05Bk
 
     string debugAction="";
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     int maxSpawn = 0;
     public GameObject objectivePrefabRigid;
     public GameObject objectivePrefabScript;
+    public GameObject rocketPrefabBall;
 
     public int objectiveScore=0;
 
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
                 maxSpawn++;
             }
+            Instantiate(rocketPrefabBall, transform.position, transform.rotation);
 
         }
         else
@@ -126,7 +129,7 @@ public class PlayerController : MonoBehaviour
     void CheckBoundary()
     {
         //check height boundary
-        CheckBoundarySideY(0, 200, 0);
+        CheckBoundarySideY(0, 600, 0);
 
 
         //checck sideways boundary;
