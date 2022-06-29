@@ -33,11 +33,12 @@ public class PlayerController : MonoBehaviour
     public GameObject rocketPrefabBall;
 
     public int objectiveScore=0;
+    CameraController cameraController;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
     }
 
     // Update is called once per frame
@@ -46,7 +47,11 @@ public class PlayerController : MonoBehaviour
             
         ProcessInputs();
         MovePlayer();
-        
+
+        if(cameraController.cameraRotation.eulerAngles.x > 45)
+        {
+            //Debug.Log("regard vers le haut");
+        }
     }
 
 
@@ -82,8 +87,15 @@ public class PlayerController : MonoBehaviour
 
                 maxSpawn++;
             }
-            Instantiate(rocketPrefabBall, transform.position, transform.rotation);
-
+            if (maxSpawn < 10)
+            {
+                Quaternion rocketRotation = transform.rotation;
+                rocketRotation.SetEulerAngles(cameraController.cameraRotation.x ,transform.rotation.y, transform.rotation.z);
+                
+                Instantiate(rocketPrefabBall, transform.position, rocketRotation);
+                
+                maxSpawn++;
+            }
         }
         else
         {
@@ -234,14 +246,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    //collision detection
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
-        objectiveScore++;
-        genericTopText.text = objectiveScore.ToString();
-        Debug.Log(objectiveScore);
+        if (!other.gameObject.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
+            objectiveScore++;
+            genericTopText.text = objectiveScore.ToString();
+            Debug.Log(objectiveScore);
 
-        //GameObject.Find("PlayerDebugMessageUpdater").GetComponent<Text>().text = objectiveScore.ToString();
-        //GetComponent<PlayerDebugMessageUpdater>().testText1.text = objectiveScore.ToString();
+            //GameObject.Find("PlayerDebugMessageUpdater").GetComponent<Text>().text = objectiveScore.ToString();
+            //GetComponent<PlayerDebugMessageUpdater>().testText1.text = objectiveScore.ToString();
+
+        }
     }
 }
